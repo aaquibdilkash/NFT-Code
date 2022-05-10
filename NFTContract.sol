@@ -1,9 +1,7 @@
+// SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0;
 
-contract NFT {
-    // constructor() {
-
-    // }
+contract NFTContract {
     uint256 public id;
 
     struct NFT {
@@ -45,7 +43,7 @@ contract NFT {
     function updateNFT(uint256 _id, string memory _name, uint256 _cost) public {
         address _owner = nftMapping[_id].owner;
         require(_owner != address(0), "This NFT doesn't exist!");
-        require(_owner == msg.sender, "Only Owner can delete the NFT!");
+        require(_owner == msg.sender, "Only Owner can update the NFT!");
 
         nftMapping[_id] = NFT(
             _id,
@@ -54,6 +52,7 @@ contract NFT {
             msg.sender
         );
     }
+
 
 
 }
